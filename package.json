@@ -1,0 +1,20 @@
+{
+  "name": "react-ts-perfect-builder",
+  "version": "1.0.0",
+  "description": "Quickly create react + typescript project development environment",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type":"git",
+    "url":"git + https://github.com/WonderSheep/react-ts-perfect-builder.git"
+  },
+  "keywords": ["react-project","typescript-project","react-typescript","react-ts-perfect-builder"],
+  "author":{
+    "name":"WonderSheep",
+    "url":"https://github.com/WonderSheep"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/WonderSheep/react-ts-perfect-builder"
+}
