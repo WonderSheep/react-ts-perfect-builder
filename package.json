@@ -4,17 +4,63 @@
   "description": "Quickly create react + typescript project development environment",
   "main": "index.js",
   "scripts": {
-    
+    "start": "cross-env NODE_ENV=development webpack --config ./scripts/config/webpack.dev.js",
+    "bulid": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js",
+    "lint": "npm run lint-eslint && npm run lint-stylelint",
+    "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
+    "lint-stylelint": "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --config .eslintrc.js"
+    ],
+    "*.{css,less,scss}": [
+      "stylelint --config .stylelintrc.js"
+    ],
+    "*.{ts,tsx,js,json,html,yml,css,less,scss}": [
+      "prettier --write"
+    ]
   },
   "repository": {
-    "type":"git",
-    "url":"git + https://github.com/WonderSheep/react-ts-perfect-builder.git"
+    "type": "git",
+    "url": "git + https://github.com/WonderSheep/react-ts-perfect-builder.git"
   },
-  "keywords": ["react-project","typescript-project","react-typescript","react-ts-perfect-builder"],
-  "author":{
-    "name":"WonderSheep",
-    "url":"https://github.com/WonderSheep"
+  "keywords": [
+    "react-project",
+    "typescript-project",
+    "react-typescript",
+    "react-ts-perfect-builder"
+  ],
+  "author": {
+    "name": "WonderSheep",
+    "url": "https://github.com/WonderSheep"
   },
   "license": "MIT",
-  "homepage": "https://github.com/WonderSheep/react-ts-perfect-builder"
+  "homepage": "https://github.com/WonderSheep/react-ts-perfect-builder",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "stylelint": "^15.6.1",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
+    "typescript": "^5.0.4",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-merge": "^5.8.0"
+  }
 }

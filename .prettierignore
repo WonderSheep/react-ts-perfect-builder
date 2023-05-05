@@ -1,0 +1,7 @@
+/node_modules
+/build
+/dist
+# 忽略less css scss文件
+**/*.css
+**/*.scss
+**/*.lcss
