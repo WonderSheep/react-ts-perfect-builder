@@ -8,9 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:promise/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react'
+    'plugin:prettier/recommended'
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -21,12 +19,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint', 'promise'],
+  plugins: ['react', '@typescript-eslint', 'promise', 'prettier'],
   settings: {
     'import/resolver': {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json']
-      }
+      },
+      typescript: {}
     }
   },
   rules: {

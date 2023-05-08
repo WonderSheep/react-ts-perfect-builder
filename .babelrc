@@ -1,0 +1,26 @@
+{
+  //从后往前的执行顺序
+  "presets": [
+    [
+      //垫片 es新特性转译到es5
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": {
+          "version": 3,
+          "proposals": true
+        },
+        "useESModules":true
+      }
+    ]
+  ]
+}

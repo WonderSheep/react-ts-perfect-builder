@@ -1,6 +1,7 @@
-// let a = 1;
-// console.log(a);
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
 
-// let arr = [1, 2, 3];
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
-// const tom = { name: 'lisan' };
+root.render(<App></App>)

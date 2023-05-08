@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES5",// 编译成哪个版本的 es
+    "module": "ESNext",// 指定生成哪个模块系统代码
+    "lib": ["DOM","DOM.Iterable","ESNext"],// 编译过程中需要引入的库文件的列表
+    "jsx": "react",// 在 .tsx 文件里支持 JSX
+
+    "isolatedModules": true, //提供一些额外的语法检查
+    "strict": true,  //启用所有严格类型检查选项
+
+    //模块解析选项
+    "moduleResolution": "node", //指定模块解析策略
+    "esModuleInterop": true,  //支持CommonJS和ES模块之间的互操作性,即 可以import React from 'react' 而不是import * as React from 'react',增加可读性
+    "resolveJsonModule": true,                // 支持导入 json 模块
+    "baseUrl": "./",//根路径
+    "paths": {
+      "src/*":["src/"],
+      "components/*":["src/components/*"],
+      "utils/*":["src/utils/*"]
+    },
+    "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用
+    "skipLibCheck": true,                     // 忽略所有的声明文件（ *.d.ts）的类型检查
+    "allowSyntheticDefaultImports": true,     // 允许从没有设置默认导出的模块中默认导入
+    "noEmit": true
+  },
+  "exclude": ["node_modules"]
+}
