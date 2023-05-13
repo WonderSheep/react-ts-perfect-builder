@@ -1,3 +1,5 @@
+const ERROR = 2
+
 module.exports = {
   env: {
     browser: true,
@@ -19,7 +21,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', '@typescript-eslint', 'promise', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'promise', 'prettier', 'import'],
   settings: {
     'import/resolver': {
       node: {
@@ -39,12 +41,8 @@ module.exports = {
         js: 'never'
       }
     ],
-    //防止webpack-merge放在devDependencies报错
-    'import/no-extraneous-dependencies': [
-      ERROR,
-      {
-        devDependencies: true
-      }
-    ]
+    //  用于检测是否引入了不必要的外部依赖，并且允许在开发依赖项中引入这些依赖。先已乘默认
+    // 'import/no-extraneous-dependencies': [ERROR, { devDependencies: false }],
+    '@typescript-eslint/no-var-requires': 0
   }
 }

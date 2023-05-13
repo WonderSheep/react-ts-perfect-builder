@@ -2,10 +2,13 @@ const { resolve } = require('path')
 const { isDev, PROJECT_PATH } = require('../constant')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const copyPlugin = require('copy-webpack-plugin')
+const WebpackBar = require('webpackbar')
+const ForkTscheckWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 //抽离重复代码
 const getCssloaders = (importLoaders) => [
-  'style-loader',
+  isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
     options: {
@@ -45,6 +48,13 @@ module.exports = {
   output: {
     filename: `js/[name]${isDev ? '' : '[hash:8]'}.js`, //打包的东西放进dist的JS文件夹里
     path: resolve(PROJECT_PATH, './dist')
+  },
+  cache: {
+    //webpack5默认支持缓存，加快编译速度
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.json'],
@@ -161,6 +171,26 @@ module.exports = {
           }
         }
       ]
+    }),
+    new WebpackBar({
+      name: isDev ? '正在启动项目' : '正在打包项目',
+      color: '#fa8c16'
+    }),
+    new ForkTscheckWebpackPlugin({
+      typescript: {
+        configFile: resolve(PROJECT_PATH, './tsconfig.json')
+      }
     })
-  ]
+  ].concat(
+    // pro环境打包 抽离css
+    !isDev
+      ? [
+          new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css', // 指定提取的 CSS 文件的输出文件名。
+            chunkFilename: 'css/[name].[contenthash:8].css', //指定提取的 CSS 文件在按需加载时的输出文件名
+            ignoreOrder: false //用于禁止忽略 CSS 文件中的顺序,确保css文件中的顺序按照原样
+          })
+        ]
+      : []
+  )
 }
