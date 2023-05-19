@@ -15,6 +15,7 @@ module.exports = {
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    //允许使用JSX
     ecmaFeatures: {
       jsx: true
     },
@@ -31,6 +32,7 @@ module.exports = {
     }
   },
   rules: {
+    //never表示不应该在这些文件后面添加后缀名
     'import/extensions': [
       ERROR,
       'ignorePackages',

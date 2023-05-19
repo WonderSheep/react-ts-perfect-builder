@@ -3,10 +3,10 @@ import React from 'react'
 function Test() {
   enum Color {
     Red,
-    Green,
-    Blue
+    Green = 'Green',
+    Blue = 'Blue'
   }
-  const c: Color = Color.Green
+  const c: Color = Color.Red
 
   return <div>{c}</div>
 }
